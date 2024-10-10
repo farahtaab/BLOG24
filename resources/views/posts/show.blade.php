@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="container mt-5">
         <div class="card shadow-sm">
             <div class="card-body">
@@ -27,6 +28,12 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+=======
+    <h1>{{$post->title}}</h1>
+    <p>{{$post->content}}</p>
+    <p>Created at: {{$post->created_at}}</p>
+    <p>Author : {{$post->user->name}}</p>
+>>>>>>> ddec44d7e6d7777388fabf9aa7ecb420111a0610
 </body>
 
 </html>
