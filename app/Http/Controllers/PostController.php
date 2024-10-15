@@ -18,21 +18,35 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar el formulario para crear un post.
      */
     public function create()
     {
-        //
+        return view('posts.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar un nuevo post en la base de datos.
      */
-    public function store(StorePostRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
+        // Validación del formulario
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+        ]);
 
+        // Crear el post en la base de datos
+        Post::create([
+            'title' => $validatedData['title'],
+            'content' => $validatedData['content'],
+            'user_id' => auth()->id(), // El ID del usuario autenticado
+        ]);
+
+        // Redirigir al índice de posts con un mensaje de éxito
+        return redirect()->route('posts.index')->with('success', 'El post ha sido creado con éxito.');
+    }
+    
     /**
      * Display the specified resource.
      */
@@ -65,3 +79,4 @@ class PostController extends Controller
         //
     }
 }
+
